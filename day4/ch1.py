@@ -1,10 +1,7 @@
-
 filename = "input.txt"
-
 # Read the first line to prepare the draw numbers in an int array
 with open(filename) as f:
     first_line = f.readline()
-
 draw_numbers = [int(value) for value in first_line.split(',')]
 print(draw_numbers)
 
@@ -26,14 +23,12 @@ for draw in draw_numbers:
         all_boards[board_index] = np.where(all_boards[board_index]==draw,-1,all_boards[board_index])
 
         # check if there's any rows or columns with all marked number. ie all "-1", sum should be -5
-
         # check columns
         if (-5 in np.sum(all_boards[board_index],0)): 
             draw_complete=True
         # check all rows
         if (-5 in np.sum(all_boards[board_index],1)): 
             draw_complete=True
-
 
         if draw_complete:
             # calculate the winnng board sum
@@ -42,8 +37,6 @@ for draw in draw_numbers:
             print(original_boards[board_index])
             break
         
-
-
     if draw_complete:
         # save the winning draw number
         winning_draw_num = draw
@@ -51,12 +44,3 @@ for draw in draw_numbers:
 
 # print the answer        
 print("Answer = ", winning_draw_num * winning_board_sum)
-
-
-# print(matrix[0])
-
-# print(np.sum(matrix[0],0))
-# print(np.sum(matrix[0],1))
-
-# print(np.where(matrix[0]==13,-1,matrix[0]))
-# print("-----------")
